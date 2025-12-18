@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# 💇‍♂️ Проект Salon — Система онлайн-записи в салоне парикмахерской
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Инструкция по развертыванию и запуску проекта в локальной среде.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠 Предварительные требования
 
-### `npm start`
+Для работы базы данных и серверной части вам потребуется установить:
+* **PostgreSQL** (СУБД)
+* **pgAdmin 4** (интерфейс для управления БД)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##  Шаги по запуску проекта
 
-### `npm test`
+### 1. Настройка базы данных в pgAdmin
+1. Запустите **pgAdmin 4**.
+2. Если сервер PostgreSQL еще не зарегистрирован:
+   - Кликните правой кнопкой на `Servers` -> `Register` -> `Server`.
+   - На вкладке **General** укажите название: `postgres`.
+   - На вкладке **Connection**:
+     - Hostname: `localhost`
+     - Port: `5432`
+     - Username: `postgres`
+     - Password: `root` 
+   - Нажмите **Save**.
+3. Создайте базу данных:
+   - Внутри сервера `postgres` нажмите правой кнопкой на `Databases` -> `Create` -> `Database...`.
+   - Укажите имя: **salon**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. Установка зависимостей
+Откройте терминал в корне проекта и выполните команду:
+### `npm i`
 
+### 3. Настройка окружения (.env)
+В папке server создайте файл с названием .env и вставьте в него строку:
+DATABASE_URL="postgresql://postgres:root@localhost:5432/salon?schema=public"
+(нужно для соединения с базой данных)
+
+### 4. Подготовка базы данных (Prisma)
+В папке server/prisma полностью удалите папку migrations (если она существует).
+Перейдите в терминале в папку сервера:
+### `cd server`
+Выполните по очереди следующие команды для настройки БД:
+### `npx prisma migrate reset --force`
+### `npx prisma generate`
+### `npx prisma migrate dev --name init`
+После выполнения в терминале должно появиться сообщение Generated Prisma Client.
+### 5. Сборка фронтенда
+Вернитесь в корень проекта (Salon/) и выполните сборку через терминал:
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 6. Запуск сервера
+Перейдите обратно в папку server в терминале и запустите бэкенд:
+npx tsx watch index.ts
+При успешном запуске вы увидите сообщение: Listening at :3000.
+Теперь можно перейти на сайт http://localhost:3000
