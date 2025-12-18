@@ -1,0 +1,266 @@
+.container {
+  --primary: #4f46e5;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-black: #000000; /* Черная обводка */
+  --radius: 12px;
+  
+  padding: 30px;
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-main);
+}
+
+/* --- Шапка и Табы --- */
+.header {
+  max-width: 1100px;
+  margin: 0 auto 30px;
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-black); /* Черная обводка */
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.tabRow {
+  display: flex;
+  gap: 12px; /* Отступы между табами */
+  margin-top: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.tabBtn {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.activeTab {
+  background: #eff6ff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.headerActions {
+  display: flex;
+  gap: 15px; /* Отступы между кнопками в шапке */
+  margin-top: 20px;
+  align-items: center;
+}
+
+/* --- Поиск --- */
+.search {
+  flex-grow: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border-black);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+/* --- Карточки записей --- */
+.list {
+  display: grid;
+  gap: 20px; /* Отступы между карточками записей */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-black); /* Черная обводка */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Отступ между рядами внутри карточки */
+}
+
+/* Группа тегов (Дата и Время) */
+.kv {
+  display: flex;
+  gap: 15px; /* Отступы между тегами даты и времени, чтобы не прилипали */
+  margin-bottom: 10px;
+}
+
+.tag {
+  background: #f1f5f9;
+  border: 1px solid var(--border-black);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.statusTag {
+  background: #e0e7ff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Основная информация (Клиент, Телефон и т.д.) */
+.mainInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px; /* Отступы между блоками инфо, чтобы не прилипали */
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Кнопки действий в карточках */
+.actions {
+  display: flex;
+  gap: 12px; /* Отступы между кнопками "Подтвердить", "Удалить" */
+  margin-top: 10px;
+}
+
+/* --- Секция Услуги --- */
+.panel {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-black);
+}
+
+.serviceForm {
+  display: flex;
+  gap: 15px; /* Отступы между инпутами в форме */
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid var(--border-black);
+}
+
+/* Ряд услуги (Название и Цена) - ГДЕ ТЫ ПРОСИЛ ЗАКРУГЛЕННЫЙ ФОН */
+.serviceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #f1f5f9; /* Серый фон */
+  border-radius: 15px; /* Закругление */
+  margin-bottom: 12px; /* Отступ между услугами */
+  border: 1px solid #cbd5e1;
+}
+
+.serviceActions {
+  display: flex;
+  gap: 10px; /* Отступ между кнопками Изменить/Удалить */
+}
+
+/* --- Расписание --- */
+.scheduleCard {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-black);
+  margin-bottom: 20px;
+}
+
+.daysRow {
+  display: flex;
+  gap: 6px; /* Отступы между кнопками дней недели */
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.dayBtn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.dayActive {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* --- Кнопки Универсальные --- */
+.btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid var(--border-black); /* Черная обводка кнопок */
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+.btnDanger {
+  background: #fff;
+  color: #ef4444;
+  border: 2px solid #ef4444; /* Красная обводка */
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnDanger:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* Заметки */
+.noteRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+/* Toast уведомления */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1e293b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
