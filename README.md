@@ -53,6 +53,6 @@ DATABASE_URL="postgresql://postgres:root@localhost:5432/salon?schema=public"
 
 ### 6. Запуск сервера
 Перейдите обратно в папку server в терминале и запустите бэкенд:
-npx tsx watch index.ts
+### `npx tsx watch index.ts`
 При успешном запуске вы увидите сообщение: Listening at :3000.
 Теперь можно перейти на сайт http://localhost:3000
