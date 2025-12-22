@@ -56,3 +56,4 @@ DATABASE_URL="postgresql://postgres:root@localhost:5432/salon?schema=public"
 ### `npx tsx watch index.ts`
 При успешном запуске вы увидите сообщение: Listening at :3000.
 Теперь можно перейти на сайт http://localhost:3000
+пароль от админ панели: admin123
